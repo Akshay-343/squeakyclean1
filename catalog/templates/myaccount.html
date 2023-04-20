@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+
+background-color: white;
+}
+
+ form {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+
+
+  }
+.form-group label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+input[type="text"] {
+  border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 170px;
+    font-size: 18px;
+    background-color: white;
+}
+
+button[type="submit"] {
+    background-color: #4d90fe;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+}
+ .form-group  a{
+     background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+}
+ .changename p{
+     text-align: left ;
+      font-family: Arial, Helvetica, sans-serif;
+font-size: 22px;
+     padding-left: 38px;
+
+ }
+
+@media(max-width:800px){
+    h2{
+        text-align: center;
+        padding-bottom: 15px;
+    }
+   .changename p{
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+       font-size: 22px;
+
+    }
+}
+
+ button[type="submit"]:hover {
+    background-color: #357ae8;
+  }
+
+
+</style>
+
+
+  {% if user.is_authenticated %}
+
+
+
+      <div class="changename">
+        <p style=";background-color: #FFE699;"><strong>Welcome, {{ user.username }}!</strong></p>
+    <form method="post">
+      {% csrf_token %}
+        <h2 style="background-color: white;color: black">Manage ID</h2>
+      <div class="form-group">
+        <label for="id_first_name">First Name:</label>
+        <input type="text" name="first_name" value="{{ user.first_name }}" id="id_first_name">
+      </div>
+      <div class="form-group">
+        <label for="id_last_name">Last Name:</label>
+        <input type="text" name="last_name" value="{{ user.last_name }}" id="id_last_name">
+      </div>
+      <div class="form-group">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" value="{{ user.username }}" id="id_username">
+      </div>
+        <div class="form-group">
+      <button type="submit">Save Changes</button>
+            </div>
+
+    </form>
+      </div>
+  {% else %}
+    <p>You are not logged in.</p>
+    <p><a href="{% url 'login' %}">Login</a></p>
+  {% endif %}
+{% endblock %}

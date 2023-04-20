@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    *{
+
+        text-align: center;
+
+    }
+    .address-card p,h3{
+        background-color: white;
+    }
+    .address-card-buttons{
+        background-color: white;
+    }
+    .edit-btn{
+    background-color: #4d90fe;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+}
+    .add-btn{
+         background-color: #4d90fe;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+    }
+
+    .delete-btn{
+         background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+    }
+
+    </style>
+  <h2>My Addresses</h2>
+    <br>
+  <div class="address-cards">
+    {% for address in addresses %}
+      <div class="address-card">
+        <h3>{{ address.full_name }}</h3>
+        <p>{{ address.house_no }}, {{ address.street }}, {{ address.landmark }}, {{ address.city }}, {{ address.pincode }}</p>
+        <p>{{ address.mobile_number }}</p>
+        <div class="address-card-buttons" style="background-color: white;padding-top: 20px;padding-bottom: 20px;">
+          <a href="{% url 'address_update' address.pk %}" class="btn edit-btn" >Edit</a>
+          <a href="{% url 'address_delete' address.pk %}" class="btn delete-btn" >Delete</a>
+            <br>
+            <br>
+        </div>
+      </div>
+    {% empty %}
+      <p>You have no saved addresses.</p>
+    {% endfor %}
+  </div>
+    <br>
+  <a href="{% url 'address_create' %}" class="btn add-btn">Add Address</a>
+{% endblock %}
+
+{% block css %}
+  <style>
+  *{
+       background-color: white;
+  }
+    .address-cards {
+      display: flex;
+      flex-wrap: wrap;
+        background-color: white;
+    }
+
+    .address-card {
+      border: 1px solid black;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 16px;
+         background: white;
+      width: calc(33.33% - 32px);
+    }
+
+    .address-card h3 {
+      margin-top: 0; background-color: white;
+    }
+
+    .address-card p {
+      margin-bottom: 8px; background-color: white;
+    }
+
+    .address-card-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .edit-btn, .delete-btn, .add-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 4px 2px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .edit-btn {
+      background-color: #007bff;
+    }
+
+    .edit-btn:hover {
+      background-color: #0069d9;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
+    }
+
+    .add-btn {
+      background-color: #28a745;
+    }
+
+    .add-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+{% endblock %}

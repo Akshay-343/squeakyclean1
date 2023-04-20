@@ -1,0 +1,50 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+h2,h1{
+    background: #72aee6;
+}
+.ser{
+    list-style-type: none;
+    margin: 4px 2px;
+    padding: 15px 32px;
+    overflow: hidden;
+    background-color: #72aee6;
+    text-align: center;
+    font-size: 16px;
+}
+ .box{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    }
+
+@media(max-width:991px) {
+    .ser{
+        font-size: 10px;
+        width: 150%;
+        padding: 5px;
+    }
+    .box{
+  width: 50%;
+  margin: 10%;
+  text-align: center;
+
+    }
+}
+</style>
+<div class="box" >
+<div class="ser">
+    <h1>CONTACT US</h1>
+<h2>Phone Number:402-000-000-00</h2>
+<h2>E-mail: businessmanage@Squeakyclean.com</h2>
+<h2>Store Address: 9325 N 181st St, Elkhorn, NE 68022</h2>
+<h2>Follow us on Instagram: Squeakyclean</h2>
+
+</div>
+
+
+
+</div>
+{% endblock %}

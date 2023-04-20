@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+     button[type="submit"] {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    width: 80px;
+  }
+
+     .goback  a{
+     background-color: #4d90fe;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+
+}
+     form{
+         text-align: center;
+     }
+
+    </style>
+
+ <h2 style="text-align: center">Are you sure you want to delete your account?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+      <br>
+       <br>
+
+
+    <div class="goback">
+        <a href="{% url 'myaccount' %}">Cancel</a>
+    </div>
+
+  </form>
+
+{% endblock %}

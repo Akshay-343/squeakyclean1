@@ -1,0 +1,92 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.service {
+  padding-left: 20%;
+    padding-right: 25%;
+  font: 500 100%/1.5 system-ui;
+    text-align: center;
+}
+.service p{
+    padding-right: 5px;
+    margin-bottom: 50px;
+margin-top: -40px;
+    max-width: 500px;
+
+}
+
+.service h2 {
+  font-size: 1.5rem;
+
+}
+
+.service img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+@media (min-width: 650px) {
+    *{
+        font-family: Helvetica;
+    }
+  .service {
+    display: grid;
+grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: center;
+
+
+  }
+  .service p {
+    max-width: 500px;
+
+  }
+}
+
+@media (max-width: 960px) {
+  .service {
+    padding: 1rem;
+      row-gap: 0rem;
+  }
+  .service h2 {
+    margin-top: 1rem;
+  }
+  .service p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+<body>
+
+  <div class="service">
+    <h2>Stain Removal - Price: $1.50 per unit</h2>
+    <img src="{% static 'images/stain.jpg' %}"  width="500" height="420" /><br>
+    <p>We will remove all stains from the product</p>
+  </div>
+
+  <div class="service">
+    <h2>Full Service Dry Cleaning - Price: $3.50 per unit</h2>
+    <img src="{% static 'images/dry-cleaning.png' %}"  width="500" height="420" /><br>
+    <p>With our full service dry cleaning, your clothes will never be cleaner! Includes stain removal.</p>
+  </div>
+
+  <div class="service">
+    <h2>Full Service Dry Cleaning With Delivery - Price: $6.50 per unit</h2>
+    <img src="{% static 'images/delivery.jpg' %}" width="500" height="420" /><br>
+    <p>The same as our normal full service dry cleaning, except we will deliver your clothes to you once they are done at a convenient time to you!</p>
+  </div>
+
+  <div class="service">
+    <h2>Specialized Dry Cleaning - Price: $9.50 per unit</h2>
+    <img src="{% static 'images/special-dry-cleaning.jpeg' %}" width="500" height="420" /><br>
+    <p>For materials that require extra care such as leather, suede, fur or wedding dresses, please select this service.</p>
+  </div>
+
+</body>
+{% endblock %}

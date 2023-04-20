@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    *{
+        text-align: center;
+    }
+
+
+input[type="submit"] {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;
+}
+    </style>
+<h1>Confirm Delete</h1>
+<p>Are you sure you want to delete the following address?</p>
+<dl>
+  <dt><strong>Full Name:</strong></dt>
+  <dd>{{ address.full_name }}</dd>
+  <dt><strong>Mobile Number:</strong></dt>
+  <dd>{{ address.mobile_number }}</dd>
+  <dt><strong>Pincode:</strong></dt>
+  <dd>{{ address.pincode }}</dd>
+  <dt><strong>House No.:</strong></dt>
+  <dd>{{ address.house_no }}</dd>
+  <dt><strong>Street:</strong></dt>
+  <dd>{{ address.street }}</dd>
+  <dt><strong>Landmark:</strong></dt>
+  <dd>{{ address.landmark }}</dd>
+  <dt>City:</dt>
+  <dd><strong>{{ address.city }}</strong></dd>
+</dl>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  <a  style=" background-color: #4d90fe;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin-top: 8px;" href="{% url 'address_list' %}">Cancel</a>
+</form>
+
+
+{%  endblock %}
